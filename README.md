@@ -142,7 +142,7 @@ WantedBy=multi-user.target
 
 </br>
 
-`Command 9` - Enable the unit file to start it during the boot sequence
+`Command 3` - Enable the unit file to start it during the boot sequence
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable display_motion_react.service
@@ -150,7 +150,7 @@ sudo systemctl enable display_motion_react.service
 
 </br>
 
-`Command 9` - Reboot Pi and your custom service should start on boot
+`Command 4` - Reboot Pi and your custom service should start on boot
 ```
 sudo reboot
 ```
