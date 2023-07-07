@@ -21,6 +21,8 @@ Or use PuTTY instead of command prompt.
 `Command 1` - Check and Update our Pi
 ```
 sudo apt-get update -y
+```
+```
 sudo apt-get upgrade -y
 ```
 
@@ -43,7 +45,9 @@ sudo apt-get install --no-install-recommends chromium-browser
 `Command 4` - Edit Openbox config
 ```
 sudo nano /etc/xdg/openbox/autostart
-
+```
+Enter the following line
+```
 # If you want to use XFCE config tools...
 
 #xfce-mcs-manager &
@@ -60,18 +64,18 @@ sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/
 # Run Chromium in kiosk mode
 chromium-browser  --noerrdialogs --disable-infobars --enable-features=OverlayScrollbar --kiosk $KIOSK_URL --check-for-update-interval=31536000
 ```
-
+Save and exit file
 </br>
 
 `Command 5` - Setup Openbox environment 
 ```
 sudo nano /etc/xdg/openbox/environment
-
-# use the above command to enter the nano editor for the environment and paste in the following line
-
+```
+Enter the following line
+```
 export KIOSK_URL=https://YourHomeAssistant_URL
 ```
-
+Save and exit file
 </br>
 
 `Command 6` - Start the X server on boot
@@ -88,11 +92,12 @@ touch ~/.bash_profile
 `Command 7` - Edit Bash Profile
 ```
 sudo nano ~/.bash_profile
-
-# After running the above command enter the following line in the file
+```
+Enter the following line in the file
+```
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx -- -nocursor
 ```
-
+Save and exit file
 </br>
 
 `Command 8` - Check ~/.bash_profile
@@ -142,9 +147,11 @@ WantedBy=multi-user.target
 
 </br>
 
-`Command 3` - Enable the unit file to start it during the boot sequence
+`Command 3` - Enable the unit file which starts the program during the boot sequence
 ```
 sudo systemctl daemon-reload
+```
+```
 sudo systemctl enable display_motion_react.service
 ```
 
