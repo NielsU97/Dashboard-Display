@@ -46,7 +46,7 @@ sudo apt-get install --no-install-recommends chromium-browser
 ```
 sudo nano /etc/xdg/openbox/autostart
 ```
-Enter the following line
+Enter the following lines
 ```
 # If you want to use XFCE config tools...
 
@@ -78,12 +78,12 @@ export KIOSK_URL=https://YourHomeAssistant_URL
 Save and exit file
 </br>
 
-`Command 6` - Start the X server on boot
+`Command 6` - Start the X server on boot. Check if bash_profile exists
 ```
-# Check if bash_profile exists (If it does just directly edit it)
 ls -la ~/.bash_profile
-
-#If it doesn't exist (Create it)
+```
+If it doesn't exist create it
+```
 touch ~/.bash_profile
 ```
 
@@ -120,7 +120,7 @@ sudo reboot
 
 <h2> Extra: Turn off/on the screen using ToF sensor </h2>
 <br>
-I have added a Time-of-Flight (ToF) sensor to automatically turn the screen on and off. Without this sensor, the screen would remain constantly on, leading to increased power consumption.
+I have added a Time-of-Flight (ToF) sensor to automatically turn the screen on and off. Without this sensor, the screen would remain constantly on, leading to increased power consumption. <a href="https://github.com/NielsU97/HomeDisplay/blob/main/display_motion_react.py" target="_blank">Klik here for the code example</a>.
 <br>
 </br>
 
