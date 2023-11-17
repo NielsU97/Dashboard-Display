@@ -1,11 +1,11 @@
   <br>
   <h1 align="center">Raspberry Pi Dashboard with Home Assistant</h1>
   <br>
- <h2 align="center">
+ <p align="center">
 <img src="https://github.com/NielsU97/HomeDisplay/blob/main/www/Images/hass_homedisplay.jpg" width="500">
   </br>
 </br>  
-<h2>	  
+<p>	  
 <h2> Install Kiosk </h2>
 </br>
 
