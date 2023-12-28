@@ -1,30 +1,41 @@
-import os
+import subprocess
 import time
 
 import board
 import busio
 import adafruit_vl53l0x
 
-i2c = busio.I2C(board.SCL, board.SDA)
-sensor = adafruit_vl53l0x.VL53L0X(i2c)
+DISPLAY_THRESHOLD = 600 #cm
 
-current_value = 0
-display_state = False
+def initialize_sensor():
+    i2c = busio.I2C(board.SCL, board.SDA)
+    return adafruit_vl53l0x.VL53L0X(i2c)
 
-while True:
-    new_value = sensor.range
-    if new_value != current_value:
-        current_value = new_value
-        if current_value < 600:
-            display_on = True
-        else:
-            display_on = False
+def toggle_display(state):
+    if state:
+      subprocess.call('XAUTHORITY=~pi/.Xauthority DISPLAY=:0 xset dpms force on', shell=True)
+    else:
+      subprocess.call('XAUTHORITY=~pi/.Xauthority DISPLAY=:0 xset dpms force off', shell=True)
 
-    if display_on != display_state:
-        display_state = display_on
-        if display_on:
-            os.system("export DISPLAY=:0 && xset dpms force on")
-        else:
-            os.system("export DISPLAY=:0 && xset dpms force off")
+def main():
+    sensor = initialize_sensor()
+    current_value = 0
+    display_state = False
 
-    time.sleep(1.0)
+    while True:
+        try:
+            new_value = sensor.range
+            if new_value != current_value:
+                current_value = new_value
+                display_on = current_value < DISPLAY_THRESHOLD
+
+                if display_on != display_state:
+                    display_state = display_on
+                    toggle_display(display_on)
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+        time.sleep(1.0)
+
+if __name__ == "__main__":
+    main()

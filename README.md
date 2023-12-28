@@ -134,12 +134,17 @@ sudo nano /lib/systemd/system/display_motion_react.service
 `Command 2` - Add in the following text (Check your path)
 ```
 [Unit]
-Description=My Sample Service
+Description=Display Motion React
 After=multi-user.target
 
 [Service]
-Type=idle
-ExecStart=/usr/bin/python /home/pi/display_motion_react.py
+Type=simple
+User=pi #Your username
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+ExecStart=/usr/bin/python3 /home/pi/display_motion_react.py
+Restart=always
+RestartSec=3
 
 [Install]
 WantedBy=multi-user.target
