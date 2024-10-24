@@ -35,7 +35,7 @@ def main():
         except Exception as e:
             print(f"An error occurred: {e}")
 
-        time.sleep(1.0)
+        time.sleep(10.0)
 
 if __name__ == "__main__":
     main()
